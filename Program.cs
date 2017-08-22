@@ -29,6 +29,8 @@ namespace cardcatDaily_dotnet
                 Console.WriteLine(item.Author);
             }
             library.CheckOut("Green Eggs and Ham", "Dr Suess");
+
+            library.SearchForOverdue("Green Eggs and Ham");
         }
     }
 }

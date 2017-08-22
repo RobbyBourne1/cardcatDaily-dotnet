@@ -21,9 +21,10 @@ namespace cardcatDaily_dotnet
             var search = Catalog.Where(w => w.Author.ToLower().Contains(name.ToLower()));
             return search;
         }
-        public IEnumerable<Book> SearchForOverdue(DateTime datePublished)
+        public IEnumerable<Book> SearchForOverdue(string bookName)
         {
             var search = Catalog.Where(w => w.DateCheckedOut >= DateTime.Now);
+            Console.WriteLine("Your boook is overdue");
             return search;
         }
 

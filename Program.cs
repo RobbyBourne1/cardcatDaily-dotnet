@@ -14,7 +14,12 @@ namespace cardcatDaily_dotnet
                 BookName = "Green Eggs and Ham",
                 Author = "Dr Suess",
                 DateCheckedOut = DateTime.Now,
-                IsCheckedOut = false,
+                IsCheckedOut = true,
+            };
+
+            var member = new Member
+            {
+                MemberName = "Robby"
             };
 
             library.Catalog.Add(book);
@@ -28,7 +33,7 @@ namespace cardcatDaily_dotnet
             {
                 Console.WriteLine(item.Author);
             }
-            library.CheckOut("Green Eggs and Ham", "Dr Suess");
+            library.CheckOut("Green Eggs and Ham", member);
 
             library.SearchForOverdue("Green Eggs and Ham");
         }

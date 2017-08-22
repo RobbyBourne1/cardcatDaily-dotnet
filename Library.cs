@@ -28,19 +28,19 @@ namespace cardcatDaily_dotnet
             return search;
         }
 
-        public void CheckOut(string bookName, string memberName)
+        public void CheckOut(string bookName, Member memberName)
         {
             var search = Catalog.FirstOrDefault(w => w.BookName == bookName);
             if (search?.IsCheckedOut == true)
             {
-                Console.WriteLine("This book is checked out");
+                Console.WriteLine($"This book is checked out by {memberName.MemberName}");
             }
             else
             {
                 Console.WriteLine("This Book is Available");
             }
         }
-        public void CheckIn(string bookName, string memberName)
+        public void CheckIn(string bookName, Member memberName)
         {
             var search = Catalog.FirstOrDefault(w => w.BookName == bookName);
             if (search?.IsCheckedOut == false)

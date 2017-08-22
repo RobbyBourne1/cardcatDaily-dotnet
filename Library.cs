@@ -11,20 +11,20 @@ namespace cardcatDaily_dotnet
         
         public List<Book> Catalog = new List<Book>();
 
-        public string SearchByBookName(string name)
+        public IEnumerable<Book> SearchByBookName(string name)
         {
-            var search = Catalog.Where(w => w.BookName == name).ToString();
+            var search = Catalog.Where(w => w.BookName.Contains(name.ToLower()));
             return search;
         }
 
-        public string SearchByBookAuthor(string name)
+        public IEnumerable<Book> SearchByBookAuthor(string name)
         {
-            var search = Catalog.Where(w => w.Author == name).ToString();
+            var search = Catalog.Where(w => w.Author.Contains(name.ToLower()));
             return search;
         }
-        public string SearchForOverdue(DateTime datePublished)
+        public IEnumerable<Book> SearchForOverdue(DateTime datePublished)
         {
-            var search = Catalog.Where(w => w.DateCheckedOut >= DateTime.Now).ToString();
+            var search = Catalog.Where(w => w.DateCheckedOut >= DateTime.Now);
             return search;
         }
 

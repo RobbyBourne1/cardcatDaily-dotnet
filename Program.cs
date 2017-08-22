@@ -6,7 +6,6 @@ namespace cardcatDaily_dotnet
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
 
             var library = new Library();
 
@@ -15,11 +14,12 @@ namespace cardcatDaily_dotnet
                 BookName = "Green Eggs and Ham",
                 Author = "Dr Suess",
                 DateCheckedOut = DateTime.Now,
-                IsCheckedOut = true
+                IsCheckedOut = true,
             };
 
             library.Catalog.Add(book);
-
+            var Title = library.SearchByBookName("Green Eggs and Ham");
+            Console.WriteLine(Title);
             Console.WriteLine(book.BookName);
         }
     }

@@ -6,20 +6,19 @@ namespace cardcatDaily_dotnet
 {
     class Library
     {
-         public string Name { get; set; }
-         public string Address { get; set; }
-        
+        public string Name { get; set; }
+        public string Address { get; set; }
+
         public List<Book> Catalog = new List<Book>();
 
         public IEnumerable<Book> SearchByBookName(string name)
         {
-            var search = Catalog.Where(w => w.BookName.Contains(name.ToLower()));
+            var search = Catalog.Where(w => w.BookName.ToLower().Contains(name.ToLower()));
             return search;
         }
-
         public IEnumerable<Book> SearchByBookAuthor(string name)
         {
-            var search = Catalog.Where(w => w.Author.Contains(name.ToLower()));
+            var search = Catalog.Where(w => w.Author.ToLower().Contains(name.ToLower()));
             return search;
         }
         public IEnumerable<Book> SearchForOverdue(DateTime datePublished)
@@ -31,7 +30,7 @@ namespace cardcatDaily_dotnet
         public void CheckOut(string bookName, string memberName)
         {
             var search = Catalog.FirstOrDefault(w => w.BookName == bookName);
-            if (search.IsCheckedOut == true)
+            if (search?.IsCheckedOut == true)
             {
                 Console.WriteLine("This book is checked out");
             }
@@ -43,14 +42,14 @@ namespace cardcatDaily_dotnet
         public void CheckIn(string bookName, string memberName)
         {
             var search = Catalog.FirstOrDefault(w => w.BookName == bookName);
-            if (search.IsCheckedOut == false)
+            if (search?.IsCheckedOut == false)
             {
                 Console.WriteLine("The Book Is already Checked In");
             }
             else
             {
                 Console.WriteLine("You are Checking in the Book");
-                search.IsCheckedOut = false; 
+                search.IsCheckedOut = false;
             }
         }
     }

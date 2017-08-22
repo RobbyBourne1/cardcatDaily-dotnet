@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace cardcatDaily_dotnet
 {
-    class Library : Book
+    class Library
     {
          public string Name { get; set; }
          public string Address { get; set; }
@@ -45,11 +45,11 @@ namespace cardcatDaily_dotnet
             var search = Catalog.FirstOrDefault(w => w.BookName == bookName);
             if (search.IsCheckedOut == false)
             {
-                Console.WriteLine("You checked the book in");
+                Console.WriteLine("The Book Is already Checked In");
             }
             else
             {
-                Console.WriteLine("This Book is Available");
+                Console.WriteLine("You are Checking in the Book");
                 search.IsCheckedOut = false; 
             }
         }

@@ -30,8 +30,8 @@ namespace cardcatDaily_dotnet
 
         public void CheckOut(string bookName, string memberName)
         {
-            var search = Catalog.FirstOrDefault(w => w.BookName == bookName).ToString();
-            if (IsCheckedOut == true)
+            var search = Catalog.FirstOrDefault(w => w.BookName == bookName);
+            if (search.IsCheckedOut == true)
             {
                 Console.WriteLine("This book is checked out");
             }
@@ -42,7 +42,16 @@ namespace cardcatDaily_dotnet
         }
         public void CheckIn(string bookName, string memberName)
         {
-
+            var search = Catalog.FirstOrDefault(w => w.BookName == bookName);
+            if (search.IsCheckedOut == false)
+            {
+                Console.WriteLine("You checked the book in");
+            }
+            else
+            {
+                Console.WriteLine("This Book is Available");
+                search.IsCheckedOut = false; 
+            }
         }
     }
 }
